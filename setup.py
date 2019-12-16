@@ -5,12 +5,12 @@ try:
 except:
     pass
 
-import distribute_setup
+#import distribute_setup
 import io
 import sys
 import platform
-distribute_setup.use_setuptools()
-from setuptools import setup, Extension, find_packages
+#distribute_setup.use_setuptools()
+from distutils.core import setup, Extension
 
 open_as_utf8 = lambda x: io.open(x, encoding='utf-8')
 
@@ -49,7 +49,7 @@ setup(name             = 'Adafruit_BBIO',
       keywords         = 'Adafruit BeagleBone IO GPIO PWM ADC',
       url              = 'https://github.com/adafruit/adafruit-beaglebone-io-python/',
       classifiers      = classifiers,
-      packages         = find_packages(),
+      packages         = ['Adafruit_BBIO'],
       py_modules       = ['Adafruit_I2C'],
       ext_modules      = [Extension('Adafruit_BBIO.GPIO', ['source/py_gpio.c', 'source/event_gpio.c', 'source/c_pinmux.c', 'source/constants.c', 'source/common.c'], **extension_args),
                           Extension('Adafruit_BBIO.PWM', ['source/py_pwm.c', 'source/c_pwm.c', 'source/c_pinmux.c', 'source/constants.c', 'source/common.c'], **extension_args),
